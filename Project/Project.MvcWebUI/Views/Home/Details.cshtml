@@ -1,0 +1,101 @@
+﻿@using Project.MvcWebUI.Entity;
+@model Product
+@{
+    ViewBag.Title = "Details";
+}
+<div id="product-details" class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/Upload/@Model.Image" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+
+                    @if (Model.IsApproved)
+                    {
+                        <span class="badge badge-primary">In Stock</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Not In Stock</span>
+                    }
+
+
+                    <span class="product-number">#234236</span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <div id="description">@Model.Description</div>
+                </div>
+
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-4">
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <span class="badge badge-success">53</span>
+                </div>
+                <div id="write-review" class="col-md-4"><a href="#"> Write a review</a></div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <h4 id="product-price">$ @Model.Price</h4>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        @Html.HiddenFor(i=>i.Id)
+                        <button type="submit" class="btn btn-success">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to Cart 
+                        </button>
+
+                    }
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description1" role="tab" aria-controls="description" aria-selected="false">Description</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="payment-methods-tab" data-toggle="tab" href="#payment-methods" role="tab" aria-controls="payment-methods" aria-selected="false">Payment Methods</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="comment-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="false">Comments</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="description1" role="tabpanel" aria-labelledby="description-tab">descriptions here</div>
+                <div class="tab-pane fade" id="payment-methods" role="tabpanel" aria-labelledby="payment-methods-tab">payment methods here</div>
+                <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="comment-tab">comments here</div>
+            </div>
+
+        </div>
+    </div>
+</div>
